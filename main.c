@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/26 13:10:52 by x250              #+#    #+#             */
-/*   Updated: 2021/07/27 19:44:38 by amorcill         ###   ########.fr       */
+/*   Created: 2021/07/28 18:20:51 by amorcill          #+#    #+#             */
+/*   Updated: 2021/07/28 19:13:31 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-char *get_next_line(int fd)
+int main(void)
 {
-	ssize_t		len;
-	char		*buffer;
+	size_t bytes;
+	// file
+	FILE *fp;
 
-	buffer = calloc(BUFFER_SIZE + 1, (size_t)sizeof(void *));
-	if (!buffer)
-		return (NULL);
-		
-	len = read(fd, buffer, BUFFER_SIZE);
-	
-	printf("\nResult: %s", buffer);
-	//write(fd, buffer, len);
+	fp = fopen("gnl_text.txt", "r");
 
-	return (buffer);
-}
+	bytes = fread()
 
 
-int main()
-{
-	get_next_line(0);
-	while(true)
-	return 0;
+
+	fp = fclose(fp);
+	return (0);
 }
