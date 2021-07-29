@@ -1,0 +1,4 @@
+The stdio.h header declares a broad assortment of functions that perform input
+ and output to files and devices such as the console. It declares more functions than any other
+   standard header and also requires more explanation because of the complex machinery
+    that underlies the functions.
