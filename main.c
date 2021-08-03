@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: x250 <x250@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 11:24:19 by amorcill          #+#    #+#             */
-/*   Updated: 2021/07/30 18:27:16 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/07/31 09:25:54 by x250             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	main(void)
 	line = get_next_line(fd);
 	while (line)
 	{
-		printf("%s", line);
+		//printf("%s", line);
+		line = NULL;
 		line = get_next_line(fd);
 	}
 	close(fd);

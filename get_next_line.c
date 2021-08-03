@@ -3,15 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: x250 <x250@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:10:52 by x250              #+#    #+#             */
-/*   Updated: 2021/07/30 19:50:09 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/08/02 11:53:03 by x250             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	unsigned char	*pointer;
+
+	pointer = malloc((nmemb * size));
+	if (pointer == NULL)
+	{
+		free(pointer);
+		return (NULL);
+	}
+	while (size > 0)
+	{
+		*(pointer + size) = '\0';
+		size--;
+	}	
+	return (pointer);
+}
 
 char	*ft_get_line(const char *line)
 {	
@@ -22,6 +40,8 @@ char	*ft_get_line(const char *line)
 
 	// 1. get subline
 	eol = ft_strchr(line, '\n');
+	*eol = '\0';
+	eol++;
 
 	ret_line = ft_substr(line, 0, (int)(eol - (char *)line) );
 	ret_line_len = ft_strlen(ret_line);
@@ -40,16 +60,18 @@ char	*ft_get_line(const char *line)
 char *get_next_line(int fd)
 {
 	ssize_t		len;
-	char		buffer[BUFFER_SIZE + 1];
+	char		buffer[BUFFER_SIZE];
 	char		*buffer_aux;
 	static char	*line;
-
+	char		*ret;
+	
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
 	//buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 
 
 	len = read(fd, buffer, BUFFER_SIZE);	
+	//printf("Buffer len: %ld Buffer: %s", len, buffer);
 	while (len > 0)
 	{
 		if (line == NULL)
@@ -63,7 +85,12 @@ char *get_next_line(int fd)
 		}
 		if (ft_strchr(line, '\n'))
 			break ;
-		len = read(fd, buffer, BUFFER_SIZE);			
+		len = read(fd, buffer, BUFFER_SIZE);
+		//printf("\nBuffer-len: %ld Buffer-read: %s", len, buffer);
 	}
-	return (ft_get_line((const char *)line));
+	if (len <= 0 )
+		return (NULL);
+	ret = ft_get_line((const char *)line);
+	printf("\n[LINE]: %s", ret);
+	return (ret);
 }

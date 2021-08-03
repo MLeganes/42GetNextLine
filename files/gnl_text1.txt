@@ -1,4 +1,8 @@
-The stdio.h header declares a broad assortment of functions that perform input
- and output to files and devices such as the console. It declares more functions than any other
-   standard header and also requires more explanation because of the complex machinery
-    that underlies the functions.
+Calling your functionget_next_linein a loop will then allow you to read the textavailable
+ on the file descriptor one line at a time until the end of it.
+
+Your function should return the line that has just been read. If there is nothingelse
+ to read or if an error has occurred it should return NULL.
+  
+Make sure that your function behaves well when it reads from a file and when itreads
+from the standard input.

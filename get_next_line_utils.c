@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: x250 <x250@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 14:53:36 by amorcill          #+#    #+#             */
-/*   Updated: 2021/07/30 14:49:08 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/08/02 10:06:56 by x250             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,6 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-// void	*ft_calloc(size_t nmemb, size_t size)
-// {
-// 	unsigned char	*pointer;
-
-// 	pointer = malloc((nmemb * size));
-// 	if (pointer == NULL)
-// 	{
-// 		free(pointer);
-// 		return (NULL);
-// 	}
-// 	while (size > 0)
-// 	{
-// 		*(pointer + size) = '\0';
-// 		size--;
-// 	}	
-// 	return (pointer);
-// }
 
 char	*ft_strdup(const char *s)
 {
