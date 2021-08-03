@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: x250 <x250@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 11:24:19 by amorcill          #+#    #+#             */
-/*   Updated: 2021/07/31 09:25:54 by x250             ###   ########.fr       */
+/*   Updated: 2021/08/03 20:36:37 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,25 @@ int	main(void)
 	char	*line;
 
 	line = NULL;
-	fd = open("files/gnl_text1.txt", O_RDONLY, 0);
+	// fd = open("files/gnl_text1.txt", O_RDONLY, 0);
+	//fd = open("gnlTester/files/41_no_nl", O_RDONLY, 0);
+	fd = open("gnlTester/files/41_with_nl", O_RDONLY, 0);
+	// fd = open("gnlTester/files/42_no_nl", O_RDONLY, 0);
+	// fd = open("gnlTester/files/42_with_nl", O_RDONLY, 0);
+	//fd = open("gnlTester/files/alternate_line_nl_no_nl", O_RDONLY, 0);
+	//fd = open("gnlTester/files/multiple_line_no_nl", O_RDONLY, 0);
+	//fd = open("", O_RDONLY, 0);
 	if (fd < 0)
 	{
-		write(1, "Error occurred when try to open fd", 33);
+		write(1, "error: occurred when try to open fd", 33);
 		return (-1);
 	}	
 	//len = 1;
 	line = get_next_line(fd);
 	while (line)
 	{
-		//printf("%s", line);
-		line = NULL;
+		printf("%s", line);
+		//line = NULL;
 		line = get_next_line(fd);
 	}
 	close(fd);
