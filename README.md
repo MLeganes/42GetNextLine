@@ -19,3 +19,4 @@ To use the  main.c in the project.
 # Testers
 Tester used to check the project.
 - https://github.com/Tripouille/gnlTester
+- https://github.com/Mazoise/42TESTERS-GNL
