@@ -7,8 +7,14 @@ Prototype funcion looks like:
 
 ## Compiler
 To use the  main.c in the project.
-
+	
 	gcc -Wall -Werror -Wextra -D BUFFER_SIZE=32 main.c get*.c
+
+# Check memory leak
+Use this line in the main, after the close function.
+	
+	system ("leaks a.out");
+
 
 # Information Sources
 - man getline

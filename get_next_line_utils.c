@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: x250 <x250@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 14:53:36 by amorcill          #+#    #+#             */
-/*   Updated: 2021/08/02 10:06:56 by x250             ###   ########.fr       */
+/*   Updated: 2021/08/05 15:21:33 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 char	*ft_strchr(const char *s, int c)
 {
+	if ( s == NULL)
+		return (0);
 	while (*s)
 	{
 		if (*s == (char)c)

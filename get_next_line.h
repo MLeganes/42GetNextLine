@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:13:10 by x250              #+#    #+#             */
-/*   Updated: 2021/07/30 17:46:15 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/08/05 20:28:25 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,29 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# define FILE_DESCRIPTOR_MAX 2024
+
+typedef struct s_gnl_buffer
+{
+	char		*buffer;
+	int			buf_rest;
+	int			read_rest;
+	char		*line;
+	int			line_len;
+	int			fd;
+	int			send_null_termination;
+}t_gnl_buffer;
+
+
 
 char	*get_next_line(int fd);
 
 /* get utils*/
 char	*ft_strchr(const char *s, int c);
-//void	*ft_calloc(size_t nmemb, size_t size);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_get_line(char **line, t_gnl_buffer *buff);
+char	*ft_read(int fd, char **line, t_gnl_buffer *buff);
+
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *ch);
 char	*ft_strjoin(char const *s1, char const *s2);
