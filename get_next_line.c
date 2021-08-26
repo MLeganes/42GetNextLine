@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: x250 <x250@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:10:52 by x250              #+#    #+#             */
-/*   Updated: 2021/08/05 20:39:17 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/08/05 23:50:46 by x250             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,12 @@ char	*ft_get_line(char **line, t_gnl_buffer *buff)
 		free(tofree);
 	}
 	//else if (*line != NULL && ft_strchr(*line, '\0'))
-	else if (buff->read_rest == 0 && buff->line_len > 0)
+	else if (buff->read_return == 0 && buff->line_len != 0 )
 	{
 		buff->line_len = 0;
 		newline = ft_strdup(buff->line);
 		free(buff->line);
 		buff->line = NULL;
-		buff->send_null_termination = 1;
-	}
-	else if (buff->line_len == 0 && buff->send_null_termination == 1)
-	{	
-		newline = NULL;
 	}
 	return (newline);
 }
@@ -78,11 +73,12 @@ char	*ft_read(int fd, char **line, t_gnl_buffer *buff)
 	if ( line == NULL)
 		return (NULL);
 	//len = read(fd, buffer, BUFFER_SIZE);
-	buff->read_rest = read(fd, buffer, BUFFER_SIZE);
+	buff->read_return = read(fd, buffer, BUFFER_SIZE);
 	//while (len > 0)
-	while (buff->read_rest > 0)
+	while (buff->read_return > 0)
 	{
-		buffer[buff->read_rest] = '\0';
+		
+		buffer[buff->read_return] = '\0';
 		if (buff->line == NULL)
 			buff->line = ft_strdup(buffer);
 		// if (*line == NULL && len > 0)
@@ -102,8 +98,10 @@ char	*ft_read(int fd, char **line, t_gnl_buffer *buff)
 		// }
 		if (ft_strchr(buff->line, '\n'))
 			break ;
-		buff->read_rest = read(buff->fd, buffer, BUFFER_SIZE);
+		buff->read_return = read(buff->fd, buffer, BUFFER_SIZE);
 	}
+	if (buff->read_return == -1)
+			return (NULL);
 	return (buff->line);
 }
 

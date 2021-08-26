@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: x250 <x250@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:13:10 by x250              #+#    #+#             */
-/*   Updated: 2021/08/05 20:28:25 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/08/05 21:59:47 by x250             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_gnl_buffer
 {
 	char		*buffer;
 	int			buf_rest;
-	int			read_rest;
+	int			read_return;
 	char		*line;
 	int			line_len;
 	int			fd;

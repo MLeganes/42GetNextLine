@@ -1,4 +1,7 @@
 .DS_Store
+.vscode/launch.json
+.vscode/tasks.json
+.gitignore
 Get_Next_Line_Tester/
 Intra Projects get_next_line Edit.pdf
 a.out
