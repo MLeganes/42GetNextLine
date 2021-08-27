@@ -1,6 +1,6 @@
 
 # 42GetNextLine
-**get-next-line** is similar to the function getline from the system
+**Get Next Line** is similar to the function getline from the system
 
 ## Compiler
 To use the  main.c in the project.
