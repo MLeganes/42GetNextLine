@@ -1,13 +1,9 @@
 
 # 42GetNextLine
-<<<<<<< HEAD
-Similar to the function getline from the system #man getline.
-=======
 **Get Next Line** is similar to the function getline from the system
->>>>>>> 604f8740c49cc8278eaf5adc73a0b27a024cf157
 
-## Compiler
-To use the  main.c in the project. Only for testing porpouse, no needed for the project.
+# Compiler
+To use the  main.c in the project. Only for testing purpose, no needed for the project.
 	
 	gcc -Wall -Werror -Wextra -D BUFFER_SIZE=32 main.c get*.c
 
