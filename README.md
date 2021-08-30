@@ -1,12 +1,9 @@
 
 # 42GetNextLine
 Similar to the function getline from the system #man getline.
-Prototype funcion looks like:
-
-	char *get_next_line(int fd)
 
 ## Compiler
-To use the  main.c in the project.
+To use the  main.c in the project. Only for testing porpouse, no needed for the project.
 	
 	gcc -Wall -Werror -Wextra -D BUFFER_SIZE=32 main.c get*.c
 
