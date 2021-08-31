@@ -7,6 +7,8 @@ To use the  main.c in the project. Only for testing purpose, no needed for the p
 	
 	gcc -Wall -Werror -Wextra -D BUFFER_SIZE=32 main.c get*.c
 
+Execute the output file ./a.out
+
 # Sources
 - man getline
 - man 2 read
