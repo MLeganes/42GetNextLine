@@ -30,3 +30,6 @@ Use this line in the main, after the close() function.
 - After read() check result, -1 error in reading, number of bytes readed or 0 end of reading
 - For every line, is needed \n\0, so basically add the \0 at the end.
 - If the last pieze of line to return is empty, return NULL ?.
+
+# Ref projects
+https://github.com/lilangbr/42GNL

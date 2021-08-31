@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: x250 <x250@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:10:52 by x250              #+#    #+#             */
-/*   Updated: 2021/08/05 23:50:46 by x250             ###   ########.fr       */
+/*   Updated: 2021/08/31 19:17:32 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ char	*ft_get_line(char **line, t_gnl_buffer *buff)
 	return (newline);
 }
 
+
+/*
+ * Function to read file with buffer size until the line is found.
+ *
+ *
+ */
 char	*ft_read(int fd, char **line, t_gnl_buffer *buff)
 {
 	char	buffer[BUFFER_SIZE + 1];
@@ -110,17 +116,11 @@ char	*get_next_line(int fd)
 	char				*ret;
 	static char			*line;
 	static t_gnl_buffer buffs[FILE_DESCRIPTOR_MAX];
-	// void 	*add_amper;
-	// int 	add_ast;
 	
 	line = NULL;
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
-	buffs[fd].fd = fd;
-	
-	//add_amper = &line;
-	//printf(" this is ast:%p", *line);
-	
+	buffs[fd].fd = fd;	
 	line = ft_read(fd, &line, &buffs[fd]);
 	ret = ft_get_line(&line, &buffs[fd]);
 	return (ret);
