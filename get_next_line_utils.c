@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 14:53:36 by amorcill          #+#    #+#             */
-/*   Updated: 2021/08/05 15:21:33 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/09/01 18:36:39 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strchr(const char *s, int c)
 {
 	if ( s == NULL)
-		return (0);
+		return (-1);
 	while (*s)
 	{
 		if (*s == (char)c)
@@ -24,7 +24,7 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (*s == (char)c)
 		return ((char *)s);
-	return (0);
+	return (-1);
 }
 
 
