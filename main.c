@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 11:24:19 by amorcill          #+#    #+#             */
-/*   Updated: 2021/09/02 13:24:34 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/09/02 20:22:40 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,8 @@ int	main(void)
 {
 	int		fd;
 	char	*line;
-
-	//fd = open("files/gnl_text1.txt", O_RDONLY, 0);
-	//fd = open("gnlTester/files/41_no_nl", O_RDONLY, 0);
-	//fd = open("gnlTester/files/41_with_nl", O_RDONLY, 0);
-	// fd = open("gnlTester/files/42_no_nl", O_RDONLY, 0);
-	// fd = open("gnlTester/files/42_with_nl", O_RDONLY, 0);
-	//fd = open("gnlTester/files/alternate_line_nl_no_nl", O_RDONLY, 0);
-	//fd = open("gnlTester/files/multiple_line_no_nl", O_RDONLY, 0);
 		
-	//fd = open("files/gnl_text1.txt", O_RDONLY, 0);
-	fd = open("gnlTester/files/multiple_line_no_nl", O_RDONLY, 0);
-	if (fd < 0)
-	{
-		write(1, "\nerror: occurred when try to open fd\n", 37);
-		return (-1);
-	}	
+	fd = open("files/gnl_text1.txt", O_RDONLY, 0);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -53,7 +39,6 @@ int	main(void)
  		line = get_next_line(fd);		
 	}
 	close(fd);
-
 	/*
 	*  Check memory
 	*/
