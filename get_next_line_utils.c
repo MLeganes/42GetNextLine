@@ -6,24 +6,28 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 14:53:36 by amorcill          #+#    #+#             */
-/*   Updated: 2021/09/02 13:11:50 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/09/02 15:53:38 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		ft_strchr(const char *s, int c)
+int		ft_find_index(const char *s, int c)
 {
-	if ( s == NULL)
-		return (-1);
-	while (*s)
+	int	index;
+	
+	index = 0;
+	if (s != NULL)
 	{
-		if (*s == (char)c)
-			return (1);
-		s++;
+		while (s[index] != '\0')
+		{
+			if (s[index] == (char)c)
+				return (index);
+			index++;
+		}
+		if (s[index] == (char)c)
+			return (index);
 	}
-	if (*s == (char)c)
-		return (1);
 	return (-1);
 }
 
@@ -87,13 +91,13 @@ char	*ft_strjoin(char *s1, char *s2)
 			strjoin[index] = s1[index];
 			index++;
 		}
+		free(s1);	
 	}
 	i = 0;
 	while (s2[i] != '\0')
 		strjoin[index++] = s2[i++];
 	strjoin[index] = '\0';
-	if ( s1 != NULL)
-		free(s1);	
+	///if ( s1 != NULL)
 	return (strjoin);
 }
 

@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:13:10 by x250              #+#    #+#             */
-/*   Updated: 2021/09/02 11:50:09 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/09/02 14:03:41 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 char	*get_next_line(int fd);
 char	*ft_get_line(char *fdbuff);
 char	*ft_update_buff(char *fdbuff);
+int 	ft_find_index(const char *buff, int);
 //void	ft_read_line(int fd, t_gnl_buffer *buff);
 //char	*ft_get_line(t_gnl_buffer *buff);
 
