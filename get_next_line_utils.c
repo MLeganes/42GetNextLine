@@ -6,25 +6,25 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 14:53:36 by amorcill          #+#    #+#             */
-/*   Updated: 2021/09/02 11:13:11 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/09/02 13:11:50 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+int		ft_strchr(const char *s, int c)
 {
 	if ( s == NULL)
-		return (NULL);
+		return (-1);
 	while (*s)
 	{
 		if (*s == (char)c)
-			return ((char *)s);
+			return (1);
 		s++;
 	}
 	if (*s == (char)c)
-		return ((char *)s);
-	return (NULL);
+		return (1);
+	return (-1);
 }
 
 
@@ -53,6 +53,8 @@ size_t	ft_strlen(const char *ch)
 {
 	int	count;
 
+	if (ch == NULL)
+		return (0);
 	count = 0;
 	while (*(ch + count))
 	{
@@ -61,7 +63,8 @@ size_t	ft_strlen(const char *ch)
 	return (count);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+//char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	len1;
 	size_t	len2;
@@ -69,23 +72,28 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	char	*strjoin;
 
-	if (!s1 || !s2)
-		return (0);
+	// if (!s1 || !s2)
+	// 	return (0);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	strjoin = malloc(len1 + len2 + 1);
 	if (!strjoin)
 		return (0);
 	index = 0;
-	while (s1[index] != '\0')
+	if (s1 != NULL)
 	{
-		strjoin[index] = s1[index];
-		index++;
+		while (s1[index] != '\0')
+		{
+			strjoin[index] = s1[index];
+			index++;
+		}
 	}
 	i = 0;
 	while (s2[i] != '\0')
 		strjoin[index++] = s2[i++];
 	strjoin[index] = '\0';
+	if ( s1 != NULL)
+		free(s1);	
 	return (strjoin);
 }
 

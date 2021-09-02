@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:10:52 by x250              #+#    #+#             */
-/*   Updated: 2021/09/02 11:15:41 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/09/02 13:21:42 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,77 +31,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	}
 	return (pointer);
 }
-
-// char	*ft_get_line(t_gnl_buffer *buff)
-// {
-// 	char	*newline;
-// 	char	*tofree;
-// 	char	*eol;
-
-// 	newline = NULL;
-// 	if (buff->line == NULL)
-// 		return NULL;
-// 	if (buff->line == NULL)
-// 		return (NULL);
-// 	eol = ft_strchr(buff->line, '\n');
-// 	if (eol)
-// 	{
-// 		tofree = buff->line;
-// 		// New line to return.
-// 		newline = ft_substr(buff->line, 0, (int)(eol - (char *)(buff->line)));
-// 		// Keep the rest of the line.
-// 		buff->line = ft_strdup(eol + 1);
-// 		free(tofree);
-// 	}	
-// 	else if (buff->read_return == 0 && buff->line_len != 0 )
-// 	{
-// 		buff->line_len = 0;
-// 		newline = ft_strdup(buff->line);
-// 		free(buff->line);
-// 		buff->line = NULL;
-// 	}
-// 	return (newline);
-// }
-
-
-/*
- * Function to read-file with buffer-size until the line \n is found.
- *
- *
- */
-// void	ft_read_line(t_gnl_buffer *buff)
-// {
-// 	char	buffer[BUFFER_SIZE + 1];
-// 	char	*tofree;
-// 	char	*line_to_ret;
-	
-// 	line_to_ret = NULL;
-// 	buff->read_return = read(buff->fd, buffer, BUFFER_SIZE);
-// 	while (buff->read_return > 0)
-// 	{
-// 		buffer[buff->read_return] = '\0';
-// 		if (buff->line == NULL)
-// 			buff->line = ft_strdup(buffer);
-// 		else
-// 		{
-// 			tofree = buff->line;
-// 			buff->line = ft_strjoin(buff->line, buffer);
-// 			buff->line_len = ft_strlen(buff->line);
-// 			free(tofree);
-// 		}
-// 		if (ft_strchr(buff->line, '\n'))
-// 		{
-// 			line_to_ret = ft_get_line(buff);
-// 			break ;
-// 		}
-// 		buff->read_return = read(buff->fd, buffer, BUFFER_SIZE);
-// 	}
-// 	// check if the buffer and read_return is 0, case eof
-// 	if (buff->read_return == 0 && buff->line == NULL)
-// 		buff->eof = 1;
-// 	return (line_to_ret);	
-// }
-
 
 
 char	*ft_get_line(char *fdbuff)
@@ -149,7 +78,7 @@ char	*ft_update_buff(char *fdbuff)
 	new_fdbuff = calloc( sizeof(char), ft_strlen(fdbuff) - i);
 	if (new_fdbuff == NULL)
 		return (NULL);
-	i++;
+	i++; // I do not want to copy the \n, the frist one in the line.
 	j = 0;
 	while (fdbuff[i])
 		new_fdbuff[j++] = fdbuff[i++];
@@ -175,9 +104,11 @@ char	*get_next_line(int fd)
 	char		buff[BUFFER_SIZE + 1];
 
 	bytes_readed = 1;
-	while (bytes_readed > 0 && ft_strchr(fd_buff, '\n') == NULL)
+	while (bytes_readed > 0 && ft_strchr(fd_buff, '\n') == -1)
 	{
+		
 		bytes_readed = read(fd, buff, BUFFER_SIZE);
+		
 		if (bytes_readed == -1 || (bytes_readed == 0 && fd_buff == NULL))
 			return (NULL);
 		buff[bytes_readed] = '\0';
@@ -185,13 +116,6 @@ char	*get_next_line(int fd)
 	}
 	line = ft_get_line(fd_buff);
 	fd_buff = ft_update_buff(fd_buff);
-	return (line);	
+	return (line);
 
-	// To Delete!!!!
-	// static t_gnl_buffer buffs[FILE_DESCRIPTOR_MAX];	
-	// if (fd < 0 || BUFFER_SIZE < 0)
-	// 	return (NULL);	
-	// buffs[fd].fd = fd;
-	// ft_read_line(&buffs[fd]);
-	// return (buffs[fd].line);		
 }
