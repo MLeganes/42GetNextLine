@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 13:10:52 by x250              #+#    #+#             */
-/*   Updated: 2021/09/01 19:51:02 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/09/02 11:15:41 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,19 +139,20 @@ char	*ft_update_buff(char *fdbuff)
 	i = 0;
 	while (fdbuff[i] && fdbuff[i] != '\n')
 		i++;
-	if ( fdbuff[i] == NULL || fdbuff[i + 1] == '\0')
+	//if ( fdbuff[i] == NULL || fdbuff[i + 1] == '\0')
+	if ( fdbuff[i] == '\0' || fdbuff[i + 1] == '\0')
 	{
 		free(fdbuff);
 		return (NULL);
 	}
 	//new_fdbuff = malloc( ft_strlen(fdbuff) - i) * sizeof(char));
-	new_fdbuff = calloc( ft_strlen(fdbuff) - i) * sizeof(char));
+	new_fdbuff = calloc( sizeof(char), ft_strlen(fdbuff) - i);
 	if (new_fdbuff == NULL)
 		return (NULL);
 	i++;
 	j = 0;
 	while (fdbuff[i])
-		new_fdbuff[j++] == fdbuff[i];
+		new_fdbuff[j++] = fdbuff[i++];
 	new_fdbuff[j] = '\0';
 	free(fdbuff);
 	//??????????fdbuff = new_fdbuff;
@@ -168,22 +169,22 @@ char	*ft_update_buff(char *fdbuff)
  */
 char	*get_next_line(int fd)
 {
-	static char	fd_buffs[FILE_DESCRIPTOR_MAX];
+	static char	*fd_buff;
 	char		*line;
 	int			bytes_readed;
 	char		buff[BUFFER_SIZE + 1];
 
 	bytes_readed = 1;
-	while (bytes_readed > 0 && ft_strchr(fd_buffs[fd], '\n') == -1)
+	while (bytes_readed > 0 && ft_strchr(fd_buff, '\n') == NULL)
 	{
 		bytes_readed = read(fd, buff, BUFFER_SIZE);
-		if (bytes_readed == -1 || bytes_readed == 0 && fd_buffs[fd])
+		if (bytes_readed == -1 || (bytes_readed == 0 && fd_buff == NULL))
 			return (NULL);
 		buff[bytes_readed] = '\0';
-		fd_buffs[fd] = ft_strjoin(fd_buffs[fd], buff);
+		fd_buff = ft_strjoin(fd_buff, buff);
 	}
-	line = ft_get_line(fd_buffs[fd]);
-	fd_buffs[fd] = ft_update_buff(fd_buffs[fd]);
+	line = ft_get_line(fd_buff);
+	fd_buff = ft_update_buff(fd_buff);
 	return (line);	
 
 	// To Delete!!!!
