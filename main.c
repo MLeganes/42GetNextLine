@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 11:24:19 by amorcill          #+#    #+#             */
-/*   Updated: 2021/09/07 16:19:53 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/09/07 16:20:57 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
  * Lib fcntl.h (sys/fcntl.h) is for open(2) files with file status flag
  * O_RDONLY	0x0000	open-for-reading-only
  */
-#include <fcntl.h> 
-
+#include <fcntl.h>
 #include "get_next_line.h"
 #include <stdio.h>
 
@@ -39,9 +38,10 @@ int	main(void)
  		line = get_next_line(fd);		
 	}
 	close(fd);
+	
 	/*
 	*  Check memory
 	*/
-	//system ("leaks a.out");
+	system ("leaks a.out");
 	return (0);
 }
