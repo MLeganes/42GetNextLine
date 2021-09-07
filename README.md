@@ -27,9 +27,10 @@ Use this line in the main, after the close() function.
 	system ("leaks a.out");
 
 # Notes
-- After read() check result, -1 error in reading, number of bytes readed or 0 end of reading
-- For every line, is needed \n\0, so basically add the \0 at the end.
-- If the last pieze of line to return is empty, return NULL ?.
+- After read() check result returned; -1 error in reading, >0 number of bytes read or 0 end of reading.
+- For every time read() add in the buffer \0 at the end.
+- BUFFER_SIZE=10000000 It gets "segmentation fault", it is used a "char buff[BUFFER_SIZE + 1]", to fix this problem,
+  is needed to allocate memory with malloc and free it after.
 
 # Ref projects
 https://github.com/lilangbr/42GNL
