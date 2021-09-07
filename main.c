@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 11:24:19 by amorcill          #+#    #+#             */
-/*   Updated: 2021/09/06 14:29:55 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/09/07 16:19:53 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include <fcntl.h> 
 
 #include "get_next_line.h"
-// needed?
-#include <stdlib.h>
 #include <stdio.h>
 
 /*
