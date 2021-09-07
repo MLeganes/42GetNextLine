@@ -12,7 +12,7 @@ Execute the output file ./a.out
 # Sources
 - man getline
 - man 2 read
-- man 2 open  
+- man 2 open
 - man leaks
 - https://www.tutorialspoint.com/cprogramming/c_file_io.htmy
 
