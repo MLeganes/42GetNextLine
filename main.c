@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 11:24:19 by amorcill          #+#    #+#             */
-/*   Updated: 2021/09/02 20:22:40 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/09/06 14:29:55 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ int	main(void)
 {
 	int		fd;
 	char	*line;
+	int		index;
 		
-	fd = open("files/gnl_text1.txt", O_RDONLY, 0);
+	fd = open("files/dracula.txt", O_RDONLY, 0);
 	line = get_next_line(fd);
+	index = 0;
 	while (line)
 	{
-		printf("%s", line);
+		printf("%d %s", index++, line);
 		free(line);
  		line = get_next_line(fd);		
 	}
@@ -42,6 +44,6 @@ int	main(void)
 	/*
 	*  Check memory
 	*/
-	system ("leaks a.out");
+	//system ("leaks a.out");
 	return (0);
 }
