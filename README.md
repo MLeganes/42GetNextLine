@@ -29,8 +29,7 @@ Use this line in the main, after the close() function.
 # Notes
 - After read() check result returned; -1 error in reading, >0 number of bytes read or 0 end of reading.
 - For every time read() add in the buffer \0 at the end.
-- BUFFER_SIZE=10000000 It gets "segmentation fault", it is used a "char buff[BUFFER_SIZE + 1]", to fix this problem,
-  is needed to allocate memory with malloc and free it after.
+- BUFFER_SIZE=10000000 It gets "segmentation fault", it is because it is used a "char buff[BUFFER_SIZE + 1]" stack memory there is a limit memory. To fix this problem, is needed to allocate memory(heap/dynamic memory) with malloc and free it after.
 
 # Ref projects
 https://github.com/lilangbr/42GNL
