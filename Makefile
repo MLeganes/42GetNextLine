@@ -6,7 +6,7 @@
 #    By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/26 13:25:49 by x250              #+#    #+#              #
-#    Updated: 2021/07/29 14:00:48 by amorcill         ###   ########.fr        #
+#    Updated: 2021/10/14 16:30:57 by amorcill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS = get_next_line.c  get_next_line_utils.c
 
 $(NAME):
 	gcc $(FLAGS) -c $(SRCS)
-	ar  $(NAME) *.o
+	ar -crs $(NAME) *.o
 
 all: $(NAME)
 
