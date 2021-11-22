@@ -6,7 +6,7 @@
 /*   By: amorcill <amorcill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 20:27:36 by amorcill          #+#    #+#             */
-/*   Updated: 2021/09/02 20:27:38 by amorcill         ###   ########.fr       */
+/*   Updated: 2021/11/22 18:26:45 by amorcill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char	*get_next_line(int fd)
 			if (fd_buff != NULL && fd_buff[0] == '\0')
 			{
 				free(fd_buff);
+				fd_buff = NULL;
 				return (NULL);
 			}
 			line = fd_buff;
